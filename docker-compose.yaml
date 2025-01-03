@@ -1,7 +1,11 @@
 services:
-  web:
-    build: .
+  drpyS:
+    image: eulac/my-drpys:latest  
+    container_name: drpyS
     ports:
-      - "${PORT}:5000"
-  redis:
-    image: "redis:alpine"
+      - "9097:5757"
+    volumes:
+      - ./drpy-node:/drpy-node
+    restart: always
+    env_file:
+      - ./drpy-node/.env.development
